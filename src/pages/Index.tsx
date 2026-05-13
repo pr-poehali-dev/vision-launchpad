@@ -6,14 +6,9 @@ import HeroTextOverlay from "@/components/HeroTextOverlay"
 import Icon from "@/components/ui/icon"
 
 const members = [
-  { rank: 1, name: "ShadowKnight", score: 15840, kills: 1247, wins: 342, badge: "👑" },
-  { rank: 2, name: "NightFury", score: 13200, kills: 1089, wins: 287, badge: "🥈" },
-  { rank: 3, name: "IronWolf", score: 11750, kills: 934, wins: 251, badge: "🥉" },
-  { rank: 4, name: "PhantomX", score: 9400, kills: 812, wins: 198, badge: null },
-  { rank: 5, name: "StormBreaker", score: 8600, kills: 743, wins: 176, badge: null },
-  { rank: 6, name: "CryptoViper", score: 7300, kills: 654, wins: 155, badge: null },
-  { rank: 7, name: "BlackMamba", score: 6100, kills: 589, wins: 132, badge: null },
-  { rank: 8, name: "QuantumRift", score: 5200, kills: 478, wins: 108, badge: null },
+  { rank: 1, name: "Бугор", score: 15840, kills: 1247, wins: 342, avatar: "https://cdn.poehali.dev/projects/054dbe53-9281-4f3d-85a6-2662da279a3b/bucket/c99ce4a7-5ea4-473d-a12f-3bb70f304a62.png", role: "Лидер" },
+  { rank: 2, name: "Ваня", score: 13200, kills: 1089, wins: 287, avatar: "https://cdn.poehali.dev/projects/054dbe53-9281-4f3d-85a6-2662da279a3b/bucket/699287b2-5b82-4c16-a673-b44b9be0030b.png", role: null },
+  { rank: 3, name: "Демьян", score: 11750, kills: 934, wins: 251, avatar: "https://cdn.poehali.dev/projects/054dbe53-9281-4f3d-85a6-2662da279a3b/bucket/a86613af-4665-4a54-8a85-9a7e3ff02d6f.png", role: null },
 ]
 
 const rankColors: Record<number, string> = {
@@ -83,10 +78,13 @@ const Index = () => {
                   </span>
 
                   <div className="flex items-center gap-3">
-                    <div className="w-9 h-9 rounded-full bg-secondary flex items-center justify-center text-lg flex-shrink-0">
-                      {m.badge ?? <Icon name="User" className="w-4 h-4 text-muted-foreground" />}
+                    <div className="w-10 h-10 rounded-full bg-secondary flex items-center justify-center flex-shrink-0 overflow-hidden border border-border">
+                      <img src={m.avatar} alt={m.name} className="w-full h-full object-cover object-top" />
                     </div>
-                    <span className="text-foreground font-mono font-semibold text-sm md:text-base">{m.name}</span>
+                    <div className="flex flex-col">
+                      <span className="text-foreground font-mono font-semibold text-sm md:text-base">{m.name}</span>
+                      {m.role && <span className="text-primary font-mono text-xs">{m.role}</span>}
+                    </div>
                   </div>
 
                   <div className="text-right md:block">
@@ -109,10 +107,9 @@ const Index = () => {
                       px-3 py-1 rounded-full text-xs font-mono font-bold
                       ${m.rank === 1 ? "bg-yellow-400/10 text-yellow-400 border border-yellow-400/20" :
                         m.rank === 2 ? "bg-gray-300/10 text-gray-300 border border-gray-300/20" :
-                        m.rank === 3 ? "bg-amber-600/10 text-amber-500 border border-amber-600/20" :
-                        "bg-secondary text-muted-foreground border border-border"}
+                        "bg-amber-600/10 text-amber-500 border border-amber-600/20"}
                     `}>
-                      {m.rank === 1 ? "LEGEND" : m.rank === 2 ? "ELITE" : m.rank === 3 ? "PRO" : "MEMBER"}
+                      {m.rank === 1 ? "LEGEND" : m.rank === 2 ? "ELITE" : "PRO"}
                     </span>
                   </div>
                 </div>
